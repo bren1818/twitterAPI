@@ -166,16 +166,27 @@ $twitter_data = getTwitterData($path, $query, $method);
 renderTwitList( $twitter_data );
 ?>
 
+
+<h3>Search for WilfridLaurier</h4>
+
+<?php
+$path = "/1.1/search/tweets.json";
+$query = array( // query parameters
+	'q' => "WilfridLaurier"
+);
+$twitter_data = getTwitterData($path, $query, $method);
+renderTwitList( $twitter_data->statuses );
+?>
+
+
 <br />
 <h3>https://dev.twitter.com/docs/api/1.1/get/followers/list - my followers</h3>
 <?php
 $path = "/1.1/followers/list.json";
 $query = array( // query parameters
     'screen_name' => 'bren1818'
-    //'count' => '3'
 );
 $twitter_data = getTwitterData($path, $query, $method);
-//pa( $twitter_data );
 renderFollowersList( $twitter_data );
 ?>
 <br />
@@ -184,13 +195,10 @@ renderFollowersList( $twitter_data );
 $path = "/1.1/friends/list.json";
 $query = array( // query parameters
     'screen_name' => 'bren1818'
-    //'count' => '3'
 );
 $twitter_data = getTwitterData($path, $query, $method);
 //pa( $twitter_data );
 renderFollowersList( $twitter_data );
 ?>
-
-
 </body>
 </html>
